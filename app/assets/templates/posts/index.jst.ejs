@@ -1,9 +1,8 @@
 <h1>So many posts</h1>
 <ul>
 	<% posts.each(function(post){ %>
-		<% console.log(post)%>
 		<li>
-			<%= post.escape("title") %>
+			<a href="#/posts/<%= post.id %>"><%= post.escape("title") %></a>
 			<form class="delete-post" data_id="<%= post.id %>">
 				<input type="submit" value="Delete Post">
 			</form>
