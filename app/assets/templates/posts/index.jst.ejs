@@ -1,0 +1,7 @@
+Hey you rendered me.
+<ul>
+	<% posts.each(function(post){ %>
+		<% console.log(post)%>
+		<li><%= post.escape("title") %></li>
+	<% }); %>
+</ul>
