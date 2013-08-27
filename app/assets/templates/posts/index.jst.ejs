@@ -1,7 +1,12 @@
-Hey you rendered me.
+<h1>So many posts</h1>
 <ul>
 	<% posts.each(function(post){ %>
 		<% console.log(post)%>
-		<li><%= post.escape("title") %></li>
+		<li>
+			<%= post.escape("title") %>
+			<form class="delete-post" data_id="<%= post.id %>">
+				<input type="submit" value="Delete Post">
+			</form>
+		</li>
 	<% }); %>
 </ul>
