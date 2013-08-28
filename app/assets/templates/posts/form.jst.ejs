@@ -1,13 +1,15 @@
-<h1>Edit Your Post</h1>
+<% var heading = post.isNew ? "New Post" : "Edit Post" %>
+<% var button = post.isNew ? "Create Post": "Save Changes" %>
+<h1><%= heading %></h1>
 <form class="post-form" data-id="<%= post.id %>">
 	<label for="post_title">Title</label>
 	<input type="text" name="title"
 		id="post_title" value="<%= post.escape("title") %>">
-
+		<br><br>
 	<label for="post_body">Body</label>
 	<textarea name="body" id="post_body"><%= post.escape("body") %></textarea>
-
-	<input type="submit" value="Submit Changes">
+	<br><br>
+	<input type="submit" value="<%= button %>">
 </form>
-
+<br>
 <a href="/#/">Index</a>

@@ -1,6 +1,6 @@
 Journal.Views.PostsForm = Backbone.View.extend({
 	events: {
-		"submit form.post-form": "update"
+		"submit form.post-form": "save"
 	},
 
 	render: function () {
@@ -10,12 +10,14 @@ Journal.Views.PostsForm = Backbone.View.extend({
 
 	template: JST['posts/form'],
 
-	update: function (event) {
+	save: function (event) {
 		event.preventDefault();
-		console.log("here!")
 		var postData = $(event.currentTarget).serializeJSON();
-		this.model.set(postData);
-		this.model.save();
-		Journal.Store.router.navigate('#/posts/' + this.model.id, {trigger: true});
+
+		this.model.save(postData, {
+			success: function (model) {
+				Journal.Store.router.navigate('#/posts/' + model.id, {trigger: true});
+			}
+		});
 	}
 });
