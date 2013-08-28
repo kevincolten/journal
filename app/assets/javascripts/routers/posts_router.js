@@ -1,6 +1,7 @@
 Journal.Routers.Posts = Backbone.Router.extend({
-	initialize: function ($rootEl, posts) {
-		this.$rootEl = $rootEl;
+	initialize: function ($sideBar, $content, posts) {
+		this.$sideBar = $sideBar;
+		this.$content = $content;
 		this.posts = posts;
 
 	},
@@ -17,7 +18,7 @@ Journal.Routers.Posts = Backbone.Router.extend({
 			collection: this.posts
 		});
 
-		this.$rootEl.html(postsIndexView.render().$el);
+		this.$sideBar.html(postsIndexView.render().$el);
 	},
 
 	show: function (id) {
@@ -27,7 +28,7 @@ Journal.Routers.Posts = Backbone.Router.extend({
 			model: post
 		});
 
-		this.$rootEl.html(postDetailView.render().$el);
+		this.$content.html(postDetailView.render().$el);
 	},
 
 	edit: function (id) {
@@ -37,7 +38,7 @@ Journal.Routers.Posts = Backbone.Router.extend({
 			model: post
 		});
 
-		this.$rootEl.html(postForm.render().$el);
+		this.$content.html(postForm.render().$el);
 	},
 
 	new: function () {
@@ -47,7 +48,7 @@ Journal.Routers.Posts = Backbone.Router.extend({
 			model: model
 		});
 
-		this.$rootEl.html(postForm.render().$el);
+		this.$content.html(postForm.render().$el);
 	}
 
 });

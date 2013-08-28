@@ -1,5 +1,6 @@
 <% var heading = post.isNew ? "New Post" : "Edit Post" %>
 <% var button = post.isNew ? "Create Post": "Save Changes" %>
+
 <h1><%= heading %></h1>
 <form class="post-form" data-id="<%= post.id %>">
 	<label for="post_title">Title</label>
