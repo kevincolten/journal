@@ -3,11 +3,13 @@ window.Journal = {
 	Collections: {},
 	Views: {},
 	Routers: {},
+	Store: {},
 	initialize: function() {
 		var posts = new Journal.Collections.Posts();
 		posts.fetch({
 			success: function () {
-				new Journal.Routers.Posts($("body"), posts);
+				Journal.Store.router = new Journal.Routers.Posts($("body"), posts);
+
 				Backbone.history.start();
 			}
 		});
