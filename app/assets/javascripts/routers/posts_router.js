@@ -4,6 +4,7 @@ Journal.Routers.Posts = Backbone.Router.extend({
 		this.$content = $content;
 		this.posts = posts;
 
+		this.index();
 	},
 
 	routes: {
@@ -43,9 +44,9 @@ Journal.Routers.Posts = Backbone.Router.extend({
 
 	new: function () {
 		var model = new Journal.Models.Post;
-		this.posts.add(model);
 		var postForm = new Journal.Views.PostsForm({
-			model: model
+			model: model,
+			collection: this.posts
 		});
 
 		this.$content.html(postForm.render().$el);

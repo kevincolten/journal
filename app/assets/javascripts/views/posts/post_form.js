@@ -1,6 +1,6 @@
 Journal.Views.PostsForm = Backbone.View.extend({
 	events: {
-		"submit form.post-form": "save"
+		"submit form.post-form": "submitModel"
 	},
 
 	render: function () {
@@ -10,11 +10,20 @@ Journal.Views.PostsForm = Backbone.View.extend({
 
 	template: JST['posts/form'],
 
-	save: function (event) {
+	_getSubmitMethod: function () {
+		if (this.model.isNew()) {
+			return this.collection.create.bind(this.collection);
+		} else {
+			return this.model.save.bind(this.model);
+		}
+	},
+
+	submitModel: function (event) {
 		event.preventDefault();
 		var postData = $(event.currentTarget).serializeJSON();
+		var submitMethod = this._getSubmitMethod()
 
-		this.model.save(postData, {
+		submitMethod(postData, {
 			success: function (model) {
 				Journal.Store.router.navigate('#/posts/' + model.id, {trigger: true});
 			}
