@@ -1,2 +1,2 @@
 Experimenting with Backbone.js. Allows you to create a post, edit that post and
-delete/remove the post, all on a single page. Niccee.
+delete/remove the post, all on a single page. Niccee. No style though :(
