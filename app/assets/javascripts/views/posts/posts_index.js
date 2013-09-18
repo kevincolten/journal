@@ -17,6 +17,7 @@ Journal.Views.PostsIndex = Backbone.View.extend({
 		var id = $(event.currentTarget).attr("data_id");
 		var post = this.collection.get(id);
 		post.destroy();
+		$('#edit-post').remove();
 	},
 
 	render: function () {
